@@ -1,1 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 20/10 💗</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      color: white;
+      background:
+        radial-gradient(ellipse at top, #63256f 0%, transparent 55%),
+        linear-gradient(145deg, #170d2d, #35123f, #120d25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .small-title {
+      color: #ffc7ed;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 9vw, 46px);
+      margin: 0 0 10px;
+      color: #ffd7f2;
+      text-shadow: 0 0 22px #ff60d0;
+    }
+
+    .subtitle {
+      color: #f3d8f4;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 27px;
+    }
+
+    .heart-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 20px 0 27px;
+    }
+
+    .heart-card {
+      width: 135px;
+      height: 145px;
+      border: 1px solid rgba(255, 199, 237, .65);
+      border-radius: 25px;
+      background: linear-gradient(
+        145deg,
+        rgba(255, 128, 213, .22),
+        rgba(130, 63, 181, .2)
+      );
+      box-shadow:
+        0 0 22px rgba(255, 76, 201, .22),
+        inset 0 0 22px rgba(255, 255, 255, .04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .heart-card:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .heart {
+      font-size: 55px;
+      filter: drop-shadow(0 0 12px #ff64ce);
+    }
+
+    .heart-label {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #ffe1f5;
+      letter-spacing: 1px;
+    }
+
+    .message {
+      padding: 19px 18px;
+      border: 1px solid rgba(255, 190, 235, .35);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .07);
+      color: #fff0fb;
+      line-height: 1.9;
+      font-size: 15px;
+      box-shadow: 0 0 25px rgba(210, 85, 255, .12);
+    }
+
+    .main-button {
+      margin-top: 24px;
+      padding: 14px 23px;
+      width: 100%;
+      max-width: 310px;
+      border: 1px solid #ffc7ed;
+      border-radius: 50px;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      background: linear-gradient(100deg, #c12e91, #8547d7);
+      box-shadow: 0 0 24px rgba(255, 72, 201, .35);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .main-button:active {
+      transform: scale(.97);
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 12px;
+      color: #dcbddd;
+    }
+
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      animation: rise linear forwards;
+      opacity: .85;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    @keyframes rise {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: .9;
+      }
+      to {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      padding: 20px;
+      background: rgba(12, 5, 22, .88);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup.show {
+      display: flex;
+    }
+
+    .popup-card {
+      width: 100%;
+      max-width: 360px;
+      padding: 27px 22px;
+      border: 1px solid #ffb7e7;
+      border-radius: 25px;
+      background: linear-gradient(145deg, #612254, #24102f);
+      box-shadow: 0 0 35px rgba(255, 66, 189, .4);
+      animation: appear .25s ease-out;
+    }
+
+    .popup-card h2 {
+      color: #ffc5eb;
+      font-size: 25px;
+    }
+
+    .popup-card p {
+      line-height: 1.9;
+      font-size: 15px;
+      color: #fff0fb;
+    }
+
+    .close-button {
+      margin-top: 12px;
+      padding: 11px 22px;
+      border: 1px solid #ffb4e7;
+      border-radius: 25px;
+      background: #a82c79;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 350px) {
+      .heart-card {
+        width: 120px;
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="small-title">A LITTLE SURPRISE FOR YOU</div>
+
+    <h1>Happy 20/10 💗</h1>
+
+    <div class="subtitle">
+      Một chút dễ thương dành tặng bạn<br>
+      nhân ngày Phụ nữ Việt Nam 🌷
+    </div>
+
+    <div class="heart-row">
+      <div class="heart-card">
+        <div class="heart">💗</div>
+        <div class="heart-label">HAPPINESS</div>
+      </div>
+
+      <div class="heart-card">
+        <div class="heart">💖</div>
+        <div class="heart-label">LOVE & JOY</div>
+      </div>
+    </div>
+
+    <div class="message">
+      Chúc bạn có một ngày 20/10 thật vui vẻ,
+      luôn mạnh khỏe, bình an và gặp nhiều may mắn.
+      Mong rằng mỗi ngày của bạn đều có những điều
+      nhỏ bé khiến bạn mỉm cười. 🌸
+    </div>
+
+    <button type="button" class="main-button" id="openButton">
+      💌 Nhấn vào đây để nhận lời chúc
+    </button>
+
+    <div class="footer">
+      Made with 💗 · Chúc bạn luôn vui vẻ nhé!
+    </div>
+  </main>
+
+  <div class="popup" id="lovePopup" role="dialog"
+       aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup-card">
+      <div style="font-size:48px">💗</div>
+
+      <h2 id="popupTitle">Gửi bạn ngày 20/10</h2>
+
+      <p>
+        Chúc bạn luôn mạnh khỏe, bình an và hạnh phúc.
+        Mong bạn gặp thật nhiều điều tốt đẹp, luôn giữ
+        được nụ cười và tự tin theo đuổi những điều mình thích.
+      </p>
+
+      <p>
+        Dù hôm nay có bận rộn thế nào, cũng nhớ dành
+        thời gian chăm sóc bản thân nhé! 🌷
+      </p>
+
+      <div style="font-size:25px">💕 💗 💕</div>
+
+      <button type="button" class="close-button" id="closeButton">
+        Đóng lời chúc 💌
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const openButton = document.getElementById("openButton");
+      const closeButton = document.getElementById("closeButton");
+      const popup = document.getElementById("lovePopup");
+
+      openButton.addEventListener("click", function () {
+        popup.classList.add("show");
+      });
+
+      closeButton.addEventListener("click", function () {
+        popup.classList.remove("show");
+      });
+
+      popup.addEventListener("click", function (event) {
+        if (event.target === popup) {
+          popup.classList.remove("show");
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          popup.classList.remove("show");
+        }
+      });
+
+      function createHeart() {
+        const heart = document.createElement("span");
+        heart.className = "sparkle";
+        heart.textContent = Math.random() > 0.5 ? "💗" : "✨";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = (75 + Math.random() * 25) + "vh";
+        heart.style.fontSize = (12 + Math.random() * 15) + "px";
+        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function () {
+          heart.remove();
+        }, 10000);
+      }
+
+      setInterval(createHeart, 650);
+    })();
+  </script>
+</body>
+</html>
