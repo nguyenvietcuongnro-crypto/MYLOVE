@@ -229,9 +229,9 @@ button:active {
 
   <div class="divider">─── ♡ ───</div>
 
-  <button id="wish" type="button">
-    💌 Nhấn vào đây nhé
-  </button>
+  button type="button" onclick="document.getElementById('lovePopup').style.display='flex'">
+  💌 Nhấn vào đây nhé
+</button>
 
   <div id="note" aria-live="polite">
     Một món quà nhỏ dành riêng cho bạn ✨
@@ -350,6 +350,44 @@ document.getElementById("wish").addEventListener("click", function () {
     particles.push(makeParticle(true));
   }
 });
-</script>
+</script><div id="lovePopup" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(15,3,18,.88);
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  text-align:center;
+">
+  <div style="
+    max-width:360px;
+    padding:28px 22px;
+    border:1px solid #ffb4e7;
+    border-radius:24px;
+    background:linear-gradient(145deg,#612254,#24102f);
+    box-shadow:0 0 35px #ff42bd;
+    color:white;
+    font-family:Arial,sans-serif;
+    line-height:1.9;
+  ">
+    <div style="font-size:48px">💗</div>
+    <h2 style="color:#ffc5eb">Gửi bạn ngày 20/10</h2>
+    <p>
+      Chúc bạn luôn mạnh khỏe, bình an và hạnh phúc.
+      Mong bạn luôn gặp nhiều may mắn, luôn mỉm cười
+      và có thật nhiều niềm vui trong cuộc sống.
+    </p>
+    <p>Hãy luôn chăm sóc bản thân thật tốt nhé! 🌷</p>
+    <div style="font-size:25px">💕 💗 💕</div>
+    <button type="button"
+      onclick="document.getElementById('lovePopup').style.display='none'"
+      style="margin-top:16px;padding:12px 22px;border-radius:25px;border:1px solid #ffb4e7;background:#a82c79;color:white;font-size:15px">
+      Đóng lời chúc 💌
+    </button>
+  </div>
+</div>
 </body>
+  
 </html>
