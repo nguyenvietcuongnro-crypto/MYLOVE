@@ -208,6 +208,24 @@ button {
     height: 92px;
   }
 }
+#result {
+  margin-top: 28px;
+  padding: 12px 22px;
+  border-radius: 18px;
+  background: #ffffffbb;
+  color: #d6336c;
+  font-size: 19px;
+  font-weight: bold;
+  box-shadow: 0 4px 18px #ff9abb55;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.35s ease;
+}
+
+#result.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 
@@ -216,11 +234,11 @@ button {
 <div id="hearts"></div>
 
 <main class="container">
-  <h1>Cậu có thích tớ không? 💗</h1>
+  <h1>Cậu có thích chơi với tớ không? 💗</h1>
   <p class="subtitle">Trả lời thật lòng nhaaa 🥺</p>
 
   <div class="buttons">
-    <button id="yes" aria-label="CÓ">CÓ 💗</button>
+    <button id="yes" aria-label="CÓ">CÓ,SIÊU BẠN THÂN 💗</button>
     <button id="no">Bạn bè 😊</button>
   </div>
 </main>
@@ -270,7 +288,7 @@ function showLetter(message) {
 }
 
 yes.addEventListener("click", () => {
-  showLetter("Mãi yêuuuuu 💗💗💗");
+  showLetter("Mãi yêuuuuu, chúc cậu ngày mới tốt lành 💗💗💗");
 });
 
 // Nút Bạn bè né chuột trên máy tính
