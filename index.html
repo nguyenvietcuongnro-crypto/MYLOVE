@@ -1,340 +1,317 @@
-<h1>HÍ HÍ</h1>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chào mừng ngày 21/10 💗</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Một câu hỏi dành cho cậu 💗</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      font-family: Arial, "Helvetica Neue", sans-serif;
-      color: white;
-      background:
-        radial-gradient(ellipse at top, #63256f 0%, transparent 55%),
-        linear-gradient(145deg, #170d2d, #35123f, #120d25);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 25px 16px;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #ffe0ec, #fff0f5, #ffd6e7);
+  color: #d6336c;
+}
 
-    .container {
-      width: 100%;
-      max-width: 430px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+/* Trái tim bay */
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    .small-title {
-      color: #ffc7ed;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 12px;
-    }
+.heart {
+  position: absolute;
+  bottom: -60px;
+  color: #ff4d88;
+  opacity: 0.8;
+  animation: fly linear infinite;
+  filter: drop-shadow(0 0 8px #ff9abb);
+  user-select: none;
+}
 
-    h1 {
-      font-size: clamp(32px, 9vw, 46px);
-      margin: 0 0 10px;
-      color: #ffd7f2;
-      text-shadow: 0 0 22px #ff60d0;
-    }
+@keyframes fly {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg) scale(1.3);
+    opacity: 0;
+  }
+}
 
-    .subtitle {
-      color: #f3d8f4;
-      font-size: 15px;
-      line-height: 1.8;
-      margin-bottom: 27px;
-    }
+/* Nội dung chính */
+.container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15vh 18px 30px;
+  text-align: center;
+}
 
-    .heart-row {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin: 20px 0 27px;
-    }
+h1 {
+  font-size: clamp(25px, 5vw, 42px);
+  margin: 0 0 12px;
+  text-shadow: 0 3px 12px #ffb6ce;
+}
 
-    .heart-card {
-      width: 135px;
-      height: 145px;
-      border: 1px solid rgba(255, 199, 237, .65);
-      border-radius: 25px;
-      background: linear-gradient(
-        145deg,
-        rgba(255, 128, 213, .22),
-        rgba(130, 63, 181, .2)
-      );
-      box-shadow:
-        0 0 22px rgba(255, 76, 201, .22),
-        inset 0 0 22px rgba(255, 255, 255, .04);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      animation: float 3s ease-in-out infinite;
-    }
+.subtitle {
+  color: #b84b70;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
 
-    .heart-card:nth-child(2) {
-      animation-delay: 1s;
-    }
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
-    .heart {
-      font-size: 55px;
-      filter: drop-shadow(0 0 12px #ff64ce);
-    }
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .heart-label {
-      margin-top: 8px;
-      font-size: 12px;
-      color: #ffe1f5;
-      letter-spacing: 1px;
-    }
+#yes {
+  width: 110px;
+  height: 100px;
+  background: #ff477e;
+  color: white;
+  clip-path: polygon(
+    50% 95%, 10% 58%, 0% 35%, 5% 15%,
+    22% 5%, 39% 12%, 50% 26%,
+    61% 12%, 78% 5%, 95% 15%,
+    100% 35%, 90% 58%
+  );
+  filter: drop-shadow(0 5px 8px #ff8fb2);
+}
 
-    .message {
-      padding: 19px 18px;
-      border: 1px solid rgba(255, 190, 235, .35);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, .07);
-      color: #fff0fb;
-      line-height: 1.9;
-      font-size: 15px;
-      box-shadow: 0 0 25px rgba(210, 85, 255, .12);
-    }
+#yes:hover {
+  transform: scale(1.12);
+}
 
-    .main-button {
-      margin-top: 24px;
-      padding: 14px 23px;
-      width: 100%;
-      max-width: 310px;
-      border: 1px solid #ffc7ed;
-      border-radius: 50px;
-      color: white;
-      font-size: 15px;
-      font-weight: bold;
-      background: linear-gradient(100deg, #c12e91, #8547d7);
-      box-shadow: 0 0 24px rgba(255, 72, 201, .35);
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
+#no {
+  background: white;
+  color: #e05280;
+  border: 2px solid #ff9fbd;
+  border-radius: 18px;
+  padding: 15px 23px;
+  box-shadow: 0 5px 15px #ffb6ce;
+  touch-action: manipulation;
+}
 
-    .main-button:active {
-      transform: scale(.97);
-    }
+/* Lá thư */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #ffdeebbb;
+  backdrop-filter: blur(6px);
+}
 
-    .footer {
-      margin-top: 22px;
-      font-size: 12px;
-      color: #dcbddd;
-    }
+.overlay.show {
+  display: flex;
+}
 
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 0;
-      animation: rise linear forwards;
-      opacity: .85;
-    }
+.letter {
+  position: relative;
+  width: min(380px, 100%);
+  padding: 35px 24px;
+  background: #fffafc;
+  border: 2px solid #ffc0d5;
+  border-radius: 24px;
+  box-shadow: 0 15px 50px #d94c7c44;
+  animation: openLetter 0.55s ease;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-9px); }
-    }
+@keyframes openLetter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-    @keyframes rise {
-      from {
-        transform: translateY(0) rotate(0deg);
-        opacity: .9;
-      }
-      to {
-        transform: translateY(-110vh) rotate(35deg);
-        opacity: 0;
-      }
-    }
+.envelope-heart {
+  font-size: 50px;
+  margin-bottom: 10px;
+  animation: beat 0.8s infinite alternate;
+}
 
-    .popup {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      padding: 20px;
-      background: rgba(12, 5, 22, .88);
-      align-items: center;
-      justify-content: center;
-    }
+@keyframes beat {
+  to { transform: scale(1.15); }
+}
 
-    .popup.show {
-      display: flex;
-    }
+#letterText {
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
 
-    .popup-card {
-      width: 100%;
-      max-width: 360px;
-      padding: 27px 22px;
-      border: 1px solid #ffb7e7;
-      border-radius: 25px;
-      background: linear-gradient(145deg, #612254, #24102f);
-      box-shadow: 0 0 35px rgba(255, 66, 189, .4);
-      animation: appear .25s ease-out;
-    }
+.close {
+  margin-top: 20px;
+  padding: 10px 22px;
+  color: white;
+  background: #ff6294;
+  border-radius: 20px;
+}
 
-    .popup-card h2 {
-      color: #ffc5eb;
-      font-size: 25px;
-    }
+@media (max-width: 480px) {
+  .container {
+    padding-top: 17vh;
+  }
 
-    .popup-card p {
-      line-height: 1.9;
-      font-size: 15px;
-      color: #fff0fb;
-    }
+  .subtitle {
+    margin-bottom: 30px;
+  }
 
-    .close-button {
-      margin-top: 12px;
-      padding: 11px 22px;
-      border: 1px solid #ffb4e7;
-      border-radius: 25px;
-      background: #a82c79;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-    }
+  .buttons {
+    gap: 18px;
+  }
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: scale(.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @media (max-width: 350px) {
-      .heart-card {
-        width: 120px;
-        height: 130px;
-      }
-    }
-  </style>
+  #yes {
+    width: 100px;
+    height: 92px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <main class="container">
-    <div class="small-title">SERIES MỖI NGÀY MỘT NIỀM VUI</div>
 
-    <h1>Happy 21/10 💗</h1>
+<div id="hearts"></div>
 
-    <div class="subtitle">
-      Mỗi ngày đều là ngày đặc biệt <br>
-      OUYEKILI 🌷
-    </div>
+<main class="container">
+  <h1>Cậu có thích tớ không? 💗</h1>
+  <p class="subtitle">Trả lời thật lòng nhaaa 🥺</p>
 
-    <div class="heart-row">
-      <div class="heart-card">
-        <div class="heart">💗</div>
-        <div class="heart-label">HAPPINESS</div>
-      </div>
-
-      <div class="heart-card">
-        <div class="heart">💖</div>
-        <div class="heart-label">LOVE & JOY</div>
-      </div>
-    </div>
-
-    <div class="message">
-      Chúc bạn có một ngày 21/10 thật vui vẻ,
-      mặc dù nay phải đi học hhh,đi học đừng tơ tưởng anh nào đấy.
-      Có người ghen đấy.
-      . 🌸
-    </div>
-
-    <button type="button" class="main-button" id="openButton">
-      💌 Nhấn vào đây có bất ngờ
-    </button>
-
-    <div class="footer">
-      Made with 💗 · Chúc bạn luôn vui vẻ nhé!
-    </div>
-  </main>
-
-  <div class="popup" id="lovePopup" role="dialog"
-       aria-modal="true" aria-labelledby="popupTitle">
-    <div class="popup-card">
-      <div style="font-size:48px">💗</div>
-
-      <h2 id="popupTitle">Gửi mylove ngày 21/10</h2>
-
-      <p>
-        Chúc myfen tôi chăm ngoan học giỏi, sau thành phú bà nuôi toiic.
-        Dù hôm nay có đi học mỏi mệt, thì nên nhớ
-       tuần sau, tháng sau hay 4 năm tới còn mệt nhiều hhh
-
-      <p>
-        ! 🌷 Ngày mới tốt lành nhe myfen
-      </p>
-
-      <div style="font-size:25px">💕 💗 💕</div>
-
-      <button type="button" class="close-button" id="closeButton">
-        Đóng lời chúc 💌
-      </button>
-    </div>
+  <div class="buttons">
+    <button id="yes" aria-label="CÓ">CÓ 💗</button>
+    <button id="no">Bạn bè 😊</button>
   </div>
+</main>
 
-  <script>
-    (function () {
-      const openButton = document.getElementById("openButton");
-      const closeButton = document.getElementById("closeButton");
-      const popup = document.getElementById("lovePopup");
+<div class="overlay" id="overlay">
+  <div class="letter">
+    <div class="envelope-heart">💌</div>
+    <div id="letterText"></div>
+    <button class="close" id="close">Đóng thư 💕</button>
+  </div>
+</div>
 
-      openButton.addEventListener("click", function () {
-        popup.classList.add("show");
-      });
+<script>
+const hearts = document.getElementById("hearts");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const overlay = document.getElementById("overlay");
+const letterText = document.getElementById("letterText");
+const close = document.getElementById("close");
 
-      closeButton.addEventListener("click", function () {
-        popup.classList.remove("show");
-      });
+// Tạo trái tim bay liên tục
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent = ["♥", "♡", "💗", "💕", "💖"][
+    Math.floor(Math.random() * 5)
+  ];
 
-      popup.addEventListener("click", function (event) {
-        if (event.target === popup) {
-          popup.classList.remove("show");
-        }
-      });
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 28) + "px";
+  heart.style.animationDuration = (5 + Math.random() * 7) + "s";
+  heart.style.animationDelay = (Math.random() * 1.5) + "s";
 
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          popup.classList.remove("show");
-        }
-      });
+  hearts.appendChild(heart);
+  heart.addEventListener("animationend", () => heart.remove());
+}
 
-      function createHeart() {
-        const heart = document.createElement("span");
-        heart.className = "sparkle";
-        heart.textContent = Math.random() > 0.5 ? "💗" : "✨";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = (75 + Math.random() * 25) + "vh";
-        heart.style.fontSize = (12 + Math.random() * 15) + "px";
-        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+for (let i = 0; i < 30; i++) {
+  setTimeout(createHeart, i * 180);
+}
+setInterval(createHeart, 350);
 
-        document.body.appendChild(heart);
+// Mở lá thư
+function showLetter(message) {
+  letterText.textContent = message;
+  overlay.classList.add("show");
+}
 
-        setTimeout(function () {
-          heart.remove();
-        }, 10000);
-      }
+yes.addEventListener("click", () => {
+  showLetter("Mãi yêuuuuu 💗💗💗");
+});
 
-      setInterval(createHeart, 650);
-    })();
-  </script>
+// Nút Bạn bè né chuột trên máy tính
+function moveButton() {
+  const margin = 12;
+  const maxX = Math.max(margin, window.innerWidth - no.offsetWidth - margin);
+  const maxY = Math.max(margin, window.innerHeight - no.offsetHeight - margin);
+
+  no.style.position = "fixed";
+  no.style.left = margin + Math.random() * (maxX - margin) + "px";
+  no.style.top = margin + Math.random() * (maxY - margin) + "px";
+  no.style.zIndex = "5";
+}
+
+// Chỉ né khi dùng chuột thật, không áp dụng với màn hình cảm ứng
+no.addEventListener("mouseenter", (event) => {
+  if (event.pointerType === "touch") return;
+  moveButton();
+});
+
+// Bắt cả trường hợp con trỏ sắp chạm vào nút
+no.addEventListener("pointerenter", (event) => {
+  if (event.pointerType === "mouse") moveButton();
+});
+
+// Điện thoại vẫn có thể bấm Bạn bè
+no.addEventListener("click", () => {
+  showLetter("Được lắm, chúc cậu ngày mới tốt lành♥️");
+});
+
+// Đóng thư
+close.addEventListener("click", () => {
+  overlay.classList.remove("show");
+});
+
+overlay.addEventListener("click", (event) => {
+  if (event.target === overlay) {
+    overlay.classList.remove("show");
+  }
+});
+</script>
+
 </body>
 </html>
